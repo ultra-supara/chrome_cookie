@@ -17,15 +17,11 @@ func main() {
 	// Parse cli options
 	targetpath := flag.String("targetpath", "", "File path of the kind (Cookies or Login Data)")
 	kind := flag.String("kind", "", "cookie or logindata")
-	localState := flag.String("localstate", "", "File path of Local State file (Windows only)")
+	localState := flag.String("localstate", "", "(optional) Chrome Local State file path")
 	sessionstorage := flag.String("sessionstorage", "", "(optional) Chrome Sesssion Storage on Keychain (Mac only)")
 
 	flag.Parse()
 	if *targetpath == "" || *kind == "" {
-		flag.Usage()
-		os.Exit(1)
-	}
-	if runtime.GOOS == "windows" && *localState == "" {
 		flag.Usage()
 		os.Exit(1)
 	}
