@@ -5,11 +5,12 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"hackChromeData/browsingdata"
-	"hackChromeData/masterkey"
 	"log"
 	"os"
 	"runtime"
+
+	"github.com/ultra-supara/cookie/HackChromeData/browsingdata"
+	"github.com/ultra-supara/cookie/HackChromeData/masterkey"
 )
 
 func main() {

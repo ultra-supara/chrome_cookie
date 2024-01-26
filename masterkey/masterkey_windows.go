@@ -3,10 +3,11 @@ package masterkey
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/tidwall/gjson"
-	"hackChromeData/decrypter"
-	"hackChromeData/util"
 	"os"
+
+	"github.com/tidwall/gjson"
+	"github.com/ultra-supara/cookie/HackChromeData/decrypter"
+	"github.com/ultra-supara/cookie/HackChromeData/util"
 )
 
 func GetMasterKey(filepath string) ([]byte, error) {

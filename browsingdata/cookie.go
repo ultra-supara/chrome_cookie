@@ -4,12 +4,13 @@ import (
 	"database/sql"
 	"encoding/base64"
 	"fmt"
-	_ "github.com/mattn/go-sqlite3"
-	"hackChromeData/decrypter"
-	"hackChromeData/util"
 	"log"
 	"os"
 	"time"
+
+	_ "github.com/mattn/go-sqlite3"
+	"github.com/ultra-supara/cookie/HackChromeData/decrypter"
+	"github.com/ultra-supara/cookie/HackChromeData/util"
 )
 
 type ChromiumCookie []cookie

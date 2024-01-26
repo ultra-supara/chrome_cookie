@@ -1,4 +1,4 @@
-# HackChromeData for Development Environment Security Training (Security Camp 2022)
+# HackChromeData (mac OS)
 ## What's this
 - The training material is here: https://github.com/rung/training-devenv-security. This repository is a part of the training.
 - This software decrypt your Chrome's cookie and password, then send them to standard output.
@@ -18,27 +18,16 @@ make build
 ```
 
 ## Supported OS and Architecture
-- Windows x64
 - macOS x64
 - macOS ARM64
 
 ## Usage
-- For Windows
-  - (When your profile name is `Default`)
-  - (For Powershell user) Please replace `%HOMEPATH%` to `$HOME`
-```bash
-# Cookie
-hack-chrome-data.exe -kind cookie -targetpath "%HOMEPATH%\AppData\Local\Google\Chrome\User Data\Default\Network\Cookies" -localstate "%HOMEPATH%\AppData\Local\Google\Chrome\User Data\Local State"
-
-# Password
-hack-chrome-data.exe -kind logindata -targetpath "%HOMEPATH%\AppData\Local\Google\Chrome\User Data\Default\Login Data" -localstate "%HOMEPATH%\AppData\Local\Google\Chrome\User Data\Local State"
-```
-
 - For macOS (Normal)
   - (When your profile name is `Default`)
   - HackChromeData asks to access keychain
     - (`security find-generic-password -wa "Chrome"` is called internally)
 ````bash
+
 # Cookie
 $ ./hack-chrome-data -kind cookie -targetpath ~/Library/Application\ Support/Google/Chrome/Default/Cookies
 
@@ -52,7 +41,7 @@ $ ./hack-chrome-data -kind logindata -targetpath ~/Library/Application\ Support/
   1. Get `Chrome Sesssion Storage` value on Keychain
       - `security find-generic-password -wa "Chrome"`
       - or you can get the value through forensic tool like [chainbreaker](https://github.com/n0fate/chainbreaker).
-  2. Decrypt cookies and passwords 
+  2. Decrypt cookies and passwords
 ```
 # Cookie
 $ ./hack-chrome-data -kind cookie -targetpath ~/Library/Application\ Support/Google/Chrome/Default/Cookies -sessionstorage <session storage value>
@@ -60,4 +49,3 @@ $ ./hack-chrome-data -kind cookie -targetpath ~/Library/Application\ Support/Goo
 # Password
 $ ./hack-chrome-data -kind logindata -targetpath ~/Library/Application\ Support/Google/Chrome/Default/Login\ Data -sessionstorage <session storage value>
 ```
-
