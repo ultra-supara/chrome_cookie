@@ -1,6 +1,5 @@
 # HackChromeData (mac OS)
-## What's this
-- The training material is here: https://github.com/rung/training-devenv-security. This repository is a part of the training.
+## NOTICE
 - This software decrypt your Chrome's cookie and password, then send them to standard output.
   - This software **does not** upload any credential to the internet.
 
@@ -9,7 +8,7 @@
 - This repository contains the necessary part only for PoC.
 
 ## Disclaimer
-- This tool is limited to education and security research only
+- This tool is limited to education and security research only!!
 
 ## Build
 - It uses github.com/crazy-max/xgo to build cgo binary on cross environment.
@@ -43,6 +42,7 @@ $ ./hack-chrome-data -kind logindata -targetpath ~/Library/Application\ Support/
       - or you can get the value through forensic tool like [chainbreaker](https://github.com/n0fate/chainbreaker).
   2. Decrypt cookies and passwords
 ```
+
 # Cookie
 $ ./hack-chrome-data -kind cookie -targetpath ~/Library/Application\ Support/Google/Chrome/Default/Cookies -sessionstorage <session storage value>
 
