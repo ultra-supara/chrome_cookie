@@ -61,7 +61,7 @@ func main() {
 	case "logindata":
 		ld, err := browsingdata.GetLoginData(decryptedKey, *targetpath)
 		if err != nil {
-			log.Fatalf("Failed to get logain data: %v", err)
+			log.Fatalf("Failed to get login data: %v", err)
 		}
 		for _, v := range ld {
 			j, _ := json.Marshal(v)

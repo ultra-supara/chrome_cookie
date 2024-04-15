@@ -4,9 +4,10 @@ import (
 	"bytes"
 	"crypto/sha1"
 	"errors"
-	"golang.org/x/crypto/pbkdf2"
 	"os/exec"
 	"strings"
+
+	"golang.org/x/crypto/pbkdf2"
 )
 
 var (
@@ -45,7 +46,7 @@ func KeyGeneration(seed []byte) ([]byte, error) {
 		return nil, ErrWrongSecurityCommand
 	}
 	chromeSalt := []byte("saltysalt")
-	// @https://source.chromium.org/chromium/chromium/src/+/master:components/os_crypt/os_crypt_mac.mm;l=157
+	//* https://source.chromium.org/chromium/chromium/src/+/master:components/os_crypt/os_crypt_mac.mm;l=157
 	key := pbkdf2.Key(chromeSecret, chromeSalt, 1003, 16, sha1.New)
 	if key == nil {
 		return nil, ErrWrongSecurityCommand
