@@ -13,9 +13,9 @@ import (
 	"github.com/ultra-supara/cookie/HackChromeData/util"
 )
 
-type ChromiumCookie []cookie
+type ChromiumCookie []Cookie
 
-type cookie struct {
+type Cookie struct {
 	Host         string `json:"host"`
 	Path         string `json:"path"`
 	KeyName      string `json:"keyname"`
@@ -29,7 +29,7 @@ type cookie struct {
 	ExpireDate   time.Time `json:"expire_date"`
 }
 
-func GetCookie(base64MasterKey string, filepath string) ([]cookie, error) {
+func GetCookie(base64MasterKey string, filepath string) ([]Cookie, error) {
 	// Decode masterkey
 	key, err := base64.StdEncoding.DecodeString(base64MasterKey)
 	if err != nil {
@@ -52,7 +52,7 @@ func GetCookie(base64MasterKey string, filepath string) ([]cookie, error) {
 	}
 	defer rows.Close()
 
-	var c []cookie
+	var c []Cookie
 	for rows.Next() {
 		var (
 			hostKey, host, path                           string
@@ -65,7 +65,7 @@ func GetCookie(base64MasterKey string, filepath string) ([]cookie, error) {
 			log.Println(err)
 		}
 
-		cookie := cookie{
+		cookie := Cookie{
 			KeyName:      hostKey,
 			Host:         host,
 			Path:         path,
@@ -88,7 +88,11 @@ func GetCookie(base64MasterKey string, filepath string) ([]cookie, error) {
 				log.Println(err)
 			}
 		}
-		cookie.Value = string(value)
+		if value != nil {
+			cookie.Value = base64.StdEncoding.EncodeToString(value)
+		} else {
+			cookie.Value = ""
+		}
 		c = append(c, cookie)
 	}
 	return c, nil
