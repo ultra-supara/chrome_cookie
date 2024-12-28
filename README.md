@@ -4,7 +4,6 @@
   - This software **does not** upload any credential to the internet.
 
 ### Referenced source code
-- Original source code is [HackBrowserData](https://github.com/moonD4rk/HackBrowserData).
 - This repository contains the necessary part only for PoC.
 
 ## Disclaimer
