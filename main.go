@@ -53,9 +53,16 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to get logain data: %v", err)
 		}
-		for _, v := range c {
-			j, _ := json.Marshal(v)
-			fmt.Println(string(j))
+		output := struct {
+			Cookies []browsingdata.Cookie `json:"cookies"`
+		}{
+			Cookies: c,
+		}
+
+		encoder := json.NewEncoder(os.Stdout)
+		encoder.SetIndent("", "  ")
+		if err := encoder.Encode(output); err != nil {
+			log.Fatalf("Failed to encode cookie data: %v", err)
 		}
 
 	case "logindata":
